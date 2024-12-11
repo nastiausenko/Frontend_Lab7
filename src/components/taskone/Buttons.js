@@ -7,6 +7,7 @@ class Buttons extends Component {
     this.state = {
       isImageAdded: true, 
     };
+    this.imgRef = React.createRef();
   }
 
   handleAdd = () => {
@@ -14,18 +15,18 @@ class Buttons extends Component {
   };
 
   handleZoomIn = () => {
-    const imageElement = document.querySelector("img");
-    if (imageElement) {
-      const currentWidth = imageElement.clientWidth;
-      imageElement.style.width = currentWidth + 100 + "px";
+    const ref = this.imgRef.current;
+    if (ref) {
+      const currentWidth = ref.clientWidth;
+      ref.style.width = currentWidth + 100 + "px";
     }
   };
 
   handleZoomOut = () => {
-    const imageElement = document.querySelector("img");
-    if (imageElement) {
-      const currentWidth = imageElement.clientWidth;
-      imageElement.style.width = currentWidth - 100 + "px";
+    const ref = this.imgRef.current;
+    if (ref) {
+      const currentWidth = ref.clientWidth;
+      ref.style.width = currentWidth - 100 + "px";
     }
   };
 
@@ -38,7 +39,7 @@ class Buttons extends Component {
 
     return (
       <div>
-        <Image isVisible={isImageAdded} />
+        <Image isVisible={isImageAdded} imgRef={this.imgRef} />
         <div id="buttons">
           <button
             id="addButton"

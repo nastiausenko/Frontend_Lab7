@@ -5,27 +5,32 @@ class Content extends Component {
     super(props);
     this.state = {
       isSeventhElementClicked: false,
-      isEighthElementClicked: false
+      isEighthElementClicked: false,
     };
+
+    this.seventhElementRef = React.createRef();
+    this.eighthElementRef = React.createRef();
   }
 
   swapColors = (element1, element2) => {
     const tempBgColor = element1.style.backgroundColor;
     const tempColor = element1.style.color;
+
     element1.style.backgroundColor = element2.style.backgroundColor;
     element1.style.color = element2.style.color;
+
     element2.style.backgroundColor = tempBgColor;
     element2.style.color = tempColor;
-  }
+  };
 
   setInitialColors = (element, bgColor, textColor) => {
     element.style.backgroundColor = bgColor;
     element.style.color = textColor;
-  }
+  };
 
   handleSeventhElementClick = () => {
-    const seventhElement = document.getElementById("seventhElement");
-    const eighthElement = document.getElementById("eighthElement");
+    const seventhElement = this.seventhElementRef.current;
+    const eighthElement = this.eighthElementRef.current;
 
     if (this.state.isSeventhElementClicked) {
       this.swapColors(seventhElement, eighthElement);
@@ -33,11 +38,11 @@ class Content extends Component {
       this.setInitialColors(seventhElement, "#C9E9D2", "#133E87");
       this.setState({ isSeventhElementClicked: true });
     }
-  }
+  };
 
   handleEighthElementClick = () => {
-    const seventhElement = document.getElementById("seventhElement");
-    const eighthElement = document.getElementById("eighthElement");
+    const seventhElement = this.seventhElementRef.current;
+    const eighthElement = this.eighthElementRef.current;
 
     if (this.state.isEighthElementClicked) {
       this.swapColors(eighthElement, seventhElement);
@@ -45,7 +50,7 @@ class Content extends Component {
       this.setInitialColors(eighthElement, "#FFE3E3", "#121481");
       this.setState({ isEighthElementClicked: true });
     }
-  }
+  };
 
   render() {
     return (
@@ -54,8 +59,20 @@ class Content extends Component {
         <ul>
           <li>Карате</li>
           <li>Танці</li>
-          <li id="seventhElement" onClick={this.handleSeventhElementClick}>Музика</li>
-          <li id="eighthElement" onClick={this.handleEighthElementClick}>Малювання</li>
+          <li
+            id="seventhElement"
+            ref={this.seventhElementRef}
+            onClick={this.handleSeventhElementClick}
+          >
+            Музика
+          </li>
+          <li
+            id="eighthElement"
+            ref={this.eighthElementRef}
+            onClick={this.handleEighthElementClick}
+          >
+            Малювання
+          </li>
         </ul>
 
         <p>Улюблені книжки:</p>

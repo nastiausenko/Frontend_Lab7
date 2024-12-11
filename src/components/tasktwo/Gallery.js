@@ -1,7 +1,7 @@
 import React from 'react';
 import GoodsCard from './GoodsCard';
 
-function Gallery() {
+const Gallery = () => {
   const products = [
     {
       id: 1,

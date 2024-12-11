@@ -1,10 +1,10 @@
 import React from "react";
 
-const Image = ({ isVisible }) => {
+const Image = ({ isVisible, imgRef}) => {
   if (!isVisible) return null;
 
   return (
-    <div id="images">
+    <div id="images" ref={imgRef}>
       <a
         className="image"
         href="https://travel.chernivtsi.ua/"
