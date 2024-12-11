@@ -1,8 +1,9 @@
 import './App.css';
-import Header from './components/Header';
-import Content from './components/Content';
-import Image from './components/Image';
-import Buttons from './components/Buttons';
+import Header from './components/taskone/Header';
+import Content from './components/taskone/Content';
+import Image from './components/taskone/Image';
+import Buttons from './components/taskone/Buttons';
+import Gallery from './components/tasktwo/Gallery';
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
       <Content />
       <Image />
       <Buttons />
+
+      <h1>Галерея товарів</h1>
+      <Gallery />
     </div>
   );
 }
